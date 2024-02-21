@@ -16,7 +16,11 @@
     You have {{count}} pending items
     {%for task in tasks%}
     <tr>
-        <td>{{task.title}}</td>
+        {% if task.status %}
+        <td style="color:rgb(9, 93, 56);">{{task.title}}</td>
+        {%else%}
+        <td style="color: rgb(183, 27, 27);">{{task.title}}</td>
+        {%endif%}
  <!---     <td><a href="{%url 'task' task.id %}">View</a></td> -->
         <td><a href="{%url 'task-update' task.id %}">Update</a></td>
         <td><a href="{%url 'task-delete' task.id %}">Delete</a></td>
