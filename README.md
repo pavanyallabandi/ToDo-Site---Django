@@ -1,6 +1,7 @@
 # Django-To-Do-list-with-user-authentication
 To Do list app with User Registration, Login, Search and full Create Read Update and DELETE functionality.
-Using Django (a Python Web Framework)
+<br>
+Using __Django__ (a Python Web Framework)
 
 ## Lobby View
 ![DEMO](https://raw.githubusercontent.com/pavanyallabandi/ToDo-Site---Django/master/lobby%20page.jpg)
