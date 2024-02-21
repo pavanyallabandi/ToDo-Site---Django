@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam Capture</title>
+</head>
+<body>
+    <h1>Webcam Capture</h1>
+
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="capture">Capture</button>
+
+    <script>
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                var video = document.getElementById('video');
+                video.srcObject = stream;
+            })
+            .catch(function(err) {
+                console.error('Error accessing the camera: ', err);
+            });
+
+        document.getElementById('capture').addEventListener('click', function() {
+            var video = document.getElementById('video');
+            var canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            var context = canvas.getContext('2d');
+
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Here, you can send the captured image data to your Django backend via AJAX or a form submission.
+            // Example: Send canvas.toDataURL() to your Django backend.
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% if request.user.is_authenticated %}
+<p>{{request.user}}</p>
+<a href="{% url 'logout' %}">Logout</a>
+{%else%}
+<a href="{% url 'login' %}">Login</a>
+{%endif%}
+
+<h1>My To Do List</h1>
+<a href="{% url 'task-create' %}">Add Task</a>
+<p></p>
+<form method="GET">
+    <input type="text" name="search-area" value={{search_input}}>
+    <input type="submit" value="Search">
+</form>
+<table>
+    You have {{count}} pending items
+    {%for task in tasks%}
+    <tr>
+        <td>{{task.title}}</td>
+ <!---     <td><a href="{%url 'task' task.id %}">View</a></td> -->
+        <td><a href="{%url 'task-update' task.id %}">Update</a></td>
+        <td><a href="{%url 'task-delete' task.id %}">Delete</a></td>
+
+    </tr>
+    {%empty%}
+    <h3>no items</h3>
+    {%endfor%}
+</table>

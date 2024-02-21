@@ -1,0 +1,11 @@
+<h1>TO DO Website</h1>
+<h2>Login</h2>
+<p>login is necessary to access</p>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Login">
+</form>
+
+<h3>Don't have an account <a href="{% url 'register'%}">Register</a></h3>
